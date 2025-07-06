@@ -1,7 +1,9 @@
 import Redis from 'ioredis';
 
 // Initialize Redis using the connection URL
-const redisClient = new Redis("redis://default:17lISeu5nxM5tZqDnG8dTEE4A7zxeU8h@redis-15884.c278.us-east-1-4.ec2.redns.redis-cloud.com:15884");
+const redisClient = new Redis("rediss://default:17lISeu5nxM5tZqDnG8dTEE4A7zxeU8h@redis-15884.c278.us-east-1-4.ec2.redns.redis-cloud.com:15884", {
+    tls: {}
+});
 
 redisClient.on('connect', () => {
     console.log('Redis connected');
