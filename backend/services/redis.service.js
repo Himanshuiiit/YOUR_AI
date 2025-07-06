@@ -1,21 +1,14 @@
-import Redis from 'ioredis';
+import { createClient } from 'redis';
 
-// Initialize Redis using the connection URL
-const redisClient = new Redis({
-  port: 15461,
-  host: 'redis-15461.c305.ap-south-1-1.ec2.redns.redis-cloud.com',
-  password: 'Eie94OGS1K21t0eFdmB00jzU6gtc4N2q',
-  username: 'default',
-  tls: {} // Required
+const client = createClient({
+    username: 'default',
+    password: 'Zc1Py1ceLAFVap3FPiOUmoMMpgXzqN1s',
+    socket: {
+        host: 'redis-19951.c84.us-east-1-2.ec2.redns.redis-cloud.com',
+        port: 19951
+    }
 });
 
+client.on('error', err => console.log('Redis Client Error', err));
 
-redisClient.on('connect', () => {
-    console.log('Redis connected');
-});
-
-redisClient.on('error', (err) => {
-    console.error('Redis connection error:', err);
-});
-
-export default redisClient;
+await client.connect();
