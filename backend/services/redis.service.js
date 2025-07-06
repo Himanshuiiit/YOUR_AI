@@ -1,4 +1,4 @@
-const { createClient } = require('redis');
+import { createClient } from 'redis';
 
 const redisClient = createClient({
   username: 'default',
@@ -23,4 +23,4 @@ redisClient.on('error', (err) => {
   }
 })();
 
-module.exports = redisClient;
+export default redisClient;
